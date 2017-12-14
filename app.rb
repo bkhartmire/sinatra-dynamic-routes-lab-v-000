@@ -25,4 +25,19 @@ class App < Sinatra::Base
     @w5 = params[:word5]
     "#{@w1} #{@w2} #{@w3} #{@w4} #{@w5}."
   end
+
+  get '/:operation/:number1/:number2' do
+    @operation = params[:operation]
+    @num1 = params[:number1]
+    @num2 = params[:number2]
+    if @operation == "add"
+      "#{@num1.to_i + @num2.to_i}"
+    elsif @operation == "subtract"
+      "#{@num1.to_i - @num2.to_i}"
+    elsif @operation == "multiply"
+      "#{@num1.to_i * @num2.to_i}"
+    elsif @operation == "divide"
+      "#{@num1.to_i / @num2.to_i}"
+    end
+  end
 end
